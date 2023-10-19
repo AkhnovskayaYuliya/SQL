@@ -39,7 +39,7 @@ public class SQLTest {
         var authInfo = DataHelper.getAuthInfoWithTestData();
         var verificationPage = LoginPage.validLogin(authInfo);
         var verificationCode = DataHelper.generateCode();
-        verificationPage.validVerify(verificationCode.getCode());
+        verificationPage.setCode(verificationCode.getCode());
         verificationPage.errorNotification("Ошибка!");
     }
 }
