@@ -11,7 +11,6 @@ public class LoginPage {
     private static final SelenideElement login = $("[data-test-id=login] input");
     private static final SelenideElement password = $("[data-test-id=password] input");
     private static final SelenideElement loginButton = $("[data-test-id=action-login]");
-    private static final SelenideElement errorNotification = $("[data-test-id=error-notification].notification__content");
 
     public static VerificationPage validLogin(DataHelper.AuthInfo info) {
         login.setValue(info.getLogin());
@@ -20,7 +19,4 @@ public class LoginPage {
         return new VerificationPage();
     }
 
-    public static void errorNotification(String expectedText) {
-        errorNotification.shouldHave(exactText(expectedText)).shouldBe(visible);
-    }
 }

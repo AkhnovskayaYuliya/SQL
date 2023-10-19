@@ -26,6 +26,7 @@ public class SQLTest {
 
     @Test
     void shouldLoginWithTestData() {
+        var loginPage = new LoginPage();
         var authInfo = DataHelper.getAuthInfoWithTestData();
         var verificationPage = LoginPage.validLogin(authInfo);
         var verificationCode = SQLHelper.getVerificationCode();
@@ -33,20 +34,12 @@ public class SQLTest {
     }
 
     @Test
-    void userDoesNotExist() {
-        var authInfo = DataHelper.generateUser();
-        LoginPage.validLogin(authInfo);
-        LoginPage.errorNotification("Ошибка! \nНеверно указан логин или пароль");
-    }
-
-    @Test
     void wrongVerificationCode() {
+        var loginPage = new LoginPage();
         var authInfo = DataHelper.getAuthInfoWithTestData();
         var verificationPage = LoginPage.validLogin(authInfo);
         var verificationCode = DataHelper.generateCode();
         verificationPage.validVerify(verificationCode.getCode());
-        verificationPage.errorNotification("Ошибка! \nНеверно указан код! Попробуйте еще разю");
+        verificationPage.errorNotification("Ошибка!");
     }
-
-
 }

@@ -26,18 +26,6 @@ public class DataHelper {
         return new AuthInfo("vasya", "qwerty123");
     }
 
-    private static String generateLogin() {
-        return faker.name().username();
-    }
-
-    private static String generatePassword() {
-        return faker.internet().password();
-    }
-
-    public static AuthInfo generateUser() {
-        return new AuthInfo(generateLogin(), generatePassword());
-    }
-
     public static VerificationCode generateCode() {
         return new VerificationCode(faker.numerify("####"));
     }
